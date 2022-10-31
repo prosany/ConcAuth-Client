@@ -1,0 +1,29 @@
+Step:
+
+[-] - Create React App
+[-] - Install important packages
+[-] - Setup Tailwind (Optional)
+[-] - Setup Route and complete the design
+[-] - Create your first context and use it
+[-] - Configure/Initialize firebase
+[-] - Get Quotes from API and display
+[-] - Get Quotes by category
+[-] - Configure Private Outlet
+[-] - Build Google Signin / Signup
+[-] - Build Github Signin / Signup
+[-] - Build Custom Email and Password Signin / Signup
+[-] - Get Quotes details from API and display (Private route)
+
+
+
+Plan:
+
+[-] - Routing
+[-] - Context API
+[-] - Providers
+[-] - Firebase Config and env
+[-] - Loading State Handle
+[-] - Navigate / Navigation
+[-] - Clean up and onAuthStateChang / unsubscribe
+[-] - Current User
+[-] - Build functions and handling
