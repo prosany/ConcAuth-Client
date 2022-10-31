@@ -32,7 +32,7 @@ const Footer = () => {
         </li>
         <li>
           <a
-            href="https://www.programming-hero.com/"
+            href="https://app.programming-hero.com/contact/"
             className="hover:underline"
             target="_blank"
             rel="noreferrer"
