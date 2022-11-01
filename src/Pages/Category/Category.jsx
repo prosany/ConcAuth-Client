@@ -11,14 +11,14 @@ const Category = () => {
   const [times, setTime] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:8090/categories")
+    fetch("https://concauth.onrender.com/categories")
       .then((res) => res.json())
       .then((data) => setCatgeory(data));
   }, []);
 
   useEffect(() => {
     let startTime = new Date().getTime();
-    fetch(`http://localhost:8090/category/${params.id}`)
+    fetch(`https://concauth.onrender.com/category/${params.id}`)
       .then((res) => res.json())
       .then((data) => {
         setQuote(data);

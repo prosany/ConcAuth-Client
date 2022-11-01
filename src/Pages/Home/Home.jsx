@@ -8,7 +8,7 @@ const Home = () => {
   const [quote, setQuote] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8090/category/all")
+    fetch("https://concauth.onrender.com/category/all")
       .then((res) => res.json())
       .then((data) => setQuote(data));
   }, []);

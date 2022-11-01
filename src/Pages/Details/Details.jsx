@@ -16,7 +16,7 @@ const Details = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:8090/quote/${params.id}`)
+    fetch(`https://concauth.onrender.com/quote/${params.id}`)
       .then((res) => res.json())
       .then((data) => {
         setSingle(data);

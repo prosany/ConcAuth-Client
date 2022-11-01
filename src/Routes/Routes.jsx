@@ -18,7 +18,7 @@ const paths = [
         path: "/",
         element: <Home />,
         loader: () => {
-          return fetch("http://localhost:8090/categories");
+          return fetch("https://concauth.onrender.com/categories");
         },
       },
       {
