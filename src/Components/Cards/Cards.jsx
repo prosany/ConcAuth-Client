@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Cards = () => {
+const Cards = ({ quote }) => {
   return (
     <div className="p-6 max-w-[100%] mx-2 my-3 bg-white rounded-lg border border-gray-200 shadow-md">
       <svg
@@ -17,16 +18,15 @@ const Cards = () => {
       </svg>
 
       <p className="mb-3 font-normal text-gray-500">
-        Go to this step by step guideline process on how to certify for your
-        weekly benefits:
+        {quote.quote.slice(0, 22) + "..."}
       </p>
       <div className="mb-3">
         <span className="bg-violet-200 rounded px-3 py-1 text-xs text-violet-600 font-bold">
-          Love
+          {quote.category_name}
         </span>
       </div>
-      <a
-        href="/"
+      <Link
+        to={`/quote/${quote.id}`}
         className="inline-flex items-center text-violet-600 hover:underline"
       >
         View Quote
@@ -39,7 +39,7 @@ const Cards = () => {
           <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
           <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
         </svg>
-      </a>
+      </Link>
     </div>
   );
 };

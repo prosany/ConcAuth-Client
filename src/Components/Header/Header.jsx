@@ -1,7 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../Context/UserContext";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
   const [nav, setNav] = useState("hidden");
   const navigate = useNavigate();
 
@@ -29,9 +31,9 @@ const Header = () => {
             <button
               type="button"
               className="text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate(user?.uid ? "/profile" : "/login")}
             >
-              Login
+              {user?.uid ? "Get started" : "Login"}
             </button>
             <button
               data-collapse-toggle="navbar-sticky"
@@ -96,14 +98,16 @@ const Header = () => {
                   Quotes
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/profile"
-                  className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-violet-700 md:p-0"
-                >
-                  Profile
-                </Link>
-              </li>
+              {user?.uid && (
+                <li>
+                  <Link
+                    to="/profile"
+                    className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-violet-700 md:p-0"
+                  >
+                    Profile
+                  </Link>
+                </li>
+              )}
               <li>
                 <a
                   href="https://app.programming-hero.com/contact/"

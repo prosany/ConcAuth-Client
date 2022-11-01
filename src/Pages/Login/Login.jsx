@@ -1,10 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Navigate, useLocation } from "react-router-dom";
+import { UserContext } from "../../Context/UserContext";
 
 const Login = () => {
-  const handleLogin = (event) => {
-    event.preventDefault();
+  const { user, socialLogin, loginUser } = useContext(UserContext);
+  const { state } = useLocation();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    let form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password);
   };
+
+  if (user?.uid) {
+    return <Navigate to={state?.pathname || "/"} />;
+  }
 
   return (
     <div className="my-5">
@@ -33,6 +44,7 @@ const Login = () => {
           <input
             type="email"
             id="email"
+            name="email"
             className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-violet-200 focus:bg-white focus:border-violet-200 block w-full pl-10 p-2.5 placeholder:text-gray-500"
             placeholder="Enter your email address"
           />
@@ -62,6 +74,7 @@ const Login = () => {
           <input
             type="password"
             id="password"
+            name="password"
             className="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-violet-200 focus:bg-white focus:border-violet-200 block w-full pl-10 p-2.5 placeholder:text-gray-500"
             placeholder="Enter your password"
           />
@@ -79,10 +92,16 @@ const Login = () => {
         </button>
       </form>
       <div className="flex justify-between items-center mt-3">
-        <button className="text-black hover:text-white bg-white border hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full mr-1">
+        <button
+          className="text-black hover:text-white bg-white border hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full mr-1"
+          onClick={() => socialLogin("google")}
+        >
           <i className="fa-brands fa-google"></i> Signin with Google
         </button>
-        <button className="text-black hover:text-white bg-white border hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full ml-1">
+        <button
+          className="text-black hover:text-white bg-white border hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full ml-1"
+          onClick={() => socialLogin("github")}
+        >
           <i className="fa-brands fa-github"></i> Signin with Github
         </button>
       </div>

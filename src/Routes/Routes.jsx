@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Profile from "../Pages/Profile/Profile";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./Middlewares/PreivateRoute";
 
 const paths = [
   {
@@ -16,13 +17,30 @@ const paths = [
       {
         path: "/",
         element: <Home />,
+        loader: () => {
+          return fetch("http://localhost:8090/categories");
+        },
       },
       {
-        path: "/category/:name",
+        path: "/category/:id",
         element: <Category />,
       },
-      { path: "/quote/:id", element: <Details /> },
-      { path: "/profile", element: <Profile /> },
+      {
+        path: "/quote/:id",
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
