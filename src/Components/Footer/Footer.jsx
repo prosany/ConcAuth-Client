@@ -5,11 +5,11 @@ const Footer = () => {
     <>
       <div className="p-4 w-full text-center bg-white rounded-lg border shadow-md sm:p-8">
         <h5 className="mb-2 text-3xl font-bold text-gray-900">
-          Get Quotes from anywhere with internet
+          Get Quotes from anywhere without internet
         </h5>
         <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
-          Stay up to date and move forward without ConcAuth on iOS &amp;
-          Android. Download the app today.
+          Stay up to date and move forward with ConcAuth on iOS &amp; Android.
+          Download the app today.
         </p>
         <div className="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
           <a
