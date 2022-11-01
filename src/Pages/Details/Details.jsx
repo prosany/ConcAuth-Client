@@ -1,33 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Details = () => {
+  const [heart, setHeart] = useState("fa-regular");
+  const reactHeart = () => {
+    toast.success("Thanks for the heart react");
+    setHeart("fa-solid");
+  };
   return (
     <>
-      <div role="status" className="animate-pulse">
-        <div className="h-2.5 bg-gray-300 rounded-full max-w-[640px] mb-2.5 mx-auto"></div>
-        <div className="h-2.5 mx-auto bg-gray-300 rounded-full max-w-[540px]"></div>
-        <div className="h-2.5 mx-auto bg-gray-300 rounded-full max-w-[340px] mt-2.5"></div>
-        <div className="flex justify-center items-center mt-4">
-          <svg
-            className="mr-2 w-10 h-10 text-gray-200"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-          <div className="w-20 h-2.5 bg-gray-200 rounded-full mr-3"></div>
-          <div className="w-24 h-2 bg-gray-200 rounded-full"></div>
-        </div>
-        <span className="sr-only">Loading...</span>
-      </div>
-
-      <figure className="mx-auto max-w-screen-md text-center">
+      <figure className="mx-auto max-w-screen-md text-center pt-8 mb-10">
         <svg
           aria-hidden="true"
           className="mx-auto mb-3 w-12 h-12 text-gray-400"
@@ -63,6 +46,16 @@ const Details = () => {
           </div>
         </figcaption>
       </figure>
+      <div className="text-center my-5">
+        <p className="mx-0 mb-2 text-xs">Quick Actions</p>
+        <Link to="/" className="text-blue-800">
+          <i className="fa-solid fa-house"></i> Home
+        </Link>
+        <span className="mx-4"></span>
+        <button className="text-blue-800" onClick={reactHeart}>
+          <i class={`${heart}  fa-heart text-red-700`}></i> Love
+        </button>
+      </div>
     </>
   );
 };
